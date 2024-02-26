@@ -6,6 +6,8 @@
     "start": "ng serve",
     "start:hm": "ng serve",
     "build": "ng build",
+    "build-openshift": "ng build --configuration openshift",
+    "build-aws": "ng build --configuration aws",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
