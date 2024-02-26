@@ -24,6 +24,8 @@ VOLUME ["/project/.angular"]
 
 VOLUME ["/project/.angular/cache"]
 
+VOLUME ["/project/.angular/cache/17.2.0"]
+
 # RUN mkdir project/.angular/.cache && chmod -R 777 project/.angular/.cache
 
 # Open port to allow traffic in containera
