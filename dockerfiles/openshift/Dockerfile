@@ -19,7 +19,7 @@ COPY . .
 # Set permision of .angular file in container
 VOLUME ["/project/.angular"]
 
-RUN mkdir project/.angular/.cache && chmod -R 777 project/.angular/.cache
+# RUN mkdir project/.angular/.cache && chmod -R 777 project/.angular/.cache
 
 # Open port to allow traffic in containera
 EXPOSE 8080
