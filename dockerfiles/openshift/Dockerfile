@@ -7,7 +7,7 @@ USER root
 # Set the working directory to /project
 WORKDIR /project
 
-RUN mkdir -p /.angular/cache
+RUN sudo mkdir -p /.angular/cache
 
 # Copy package files in container currunt direcctory
 COPY --chown=1001:1001 package.json package-lock.json ./
