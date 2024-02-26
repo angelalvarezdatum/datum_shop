@@ -1,4 +1,4 @@
-FROM node:18 AS build
+FROM registry.access.redhat.com/ubi8/nodejs-18:1-71.1695741533 AS build
 
 USER root
 
@@ -9,9 +9,7 @@ WORKDIR /app
 
 COPY . /app
 
-RUN npm install -g npm@8.0.0
-
-RUN npm install --legacy-peer-deps
+RUN npm install
 
 # Generate the build of the application
 RUN npm run build

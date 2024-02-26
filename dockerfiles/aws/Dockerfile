@@ -1,28 +1,26 @@
-FROM node:18 AS build
+# Import the base image as UBI-Nodejs 18 image
+FROM registry.access.redhat.com/ubi8/nodejs-18
 
 USER root
 
-RUN mkdir -p /app
+# Set the working directory to /project
+WORKDIR /project
 
-# Set the working directory
-WORKDIR /app
+# Copy package files in container currunt direcctory
+COPY --chown=1001:1001 package.json package-lock.json ./
 
-COPY . /app
 
-RUN npm install -g npm@10.4.0
+# Install all Angular dependacies
+RUN npm ci
 
-RUN npm install --legacy-peer-deps
+# Add application files in container 
+COPY . .
 
-# Generate the build of the application
-RUN npm run build
+# Set permision of .angular file in container
+VOLUME ["/project/.angular"]
 
-WORKDIR /app/dist
+# Open port to allow traffic in container
+EXPOSE 8080
 
-# Stage 2: Serve app with nginx server
-FROM nginx:latest
-
-COPY nginx.conf /etc/nginx/nginx.conf
-
-COPY --from=build /app/dist/template /usr/share/nginx/html
-
-CMD nginx -g "daemon off;"
+# Run start script using npm command
+CMD ["npm", "start"]
