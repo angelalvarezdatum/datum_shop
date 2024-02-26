@@ -21,7 +21,7 @@ COPY . .
 # Set permision of .angular file in container
 VOLUME ["/project/.angular"]
 
-VOLUME ["/project/.angular/cache/17.2.0"]
+VOLUME ["/project/.angular/cache/17.2.0/babel-webpack"]
 
 # RUN mkdir project/.angular/.cache && chmod -R 777 project/.angular/.cache
 
