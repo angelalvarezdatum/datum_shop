@@ -7,14 +7,14 @@ USER root
 # Set the working directory to /project
 WORKDIR /project
 
-RUN sudo mkdir -p /.angular/cache
+RUN mkdir -p /project/.angular/cache
 
 # Copy package files in container currunt direcctory
 COPY --chown=1001:1001 package.json package-lock.json ./
 
 
 # Install all Angular dependacies
-RUN npm ci ulimit -n 4096
+RUN npm ci
 
 # Add application files in container 
 COPY . .
@@ -22,12 +22,12 @@ COPY . .
 # Set permision of .angular file in container
 VOLUME ["/project/.angular"]
 
+VOLUME ["/project/.angular/cache"]
+
 # RUN mkdir project/.angular/.cache && chmod -R 777 project/.angular/.cache
 
 # Open port to allow traffic in containera
 EXPOSE 8080
-
-RUN ls
 
 COPY ./src/environments/environment.openshift.ts ./src/environments/environment.ts
 
