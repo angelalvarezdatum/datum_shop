@@ -3,7 +3,6 @@ FROM registry.access.redhat.com/ubi8/nodejs-20
 
 USER root
 
-
 # Set the working directory to /project
 WORKDIR /project
 
@@ -14,7 +13,7 @@ COPY --chown=1001:1001 package.json package-lock.json ./
 
 
 # Install all Angular dependacies
-RUN npm ci
+RUN npm ci --ulimit nofile=4096:4096
 
 # Add application files in container 
 COPY . .
