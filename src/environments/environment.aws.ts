@@ -1,4 +1,4 @@
 export const environment = {
     apiProductos: '',
-    production: false
+    production: true
 }

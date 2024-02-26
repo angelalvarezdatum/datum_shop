@@ -22,5 +22,8 @@ VOLUME ["/project/.angular"]
 # Open port to allow traffic in container
 EXPOSE 8080
 
+COPY ./environments/environment.aws.ts ./environemnts/environment.prod.ts
+COPY ./environments/environment.prod.ts ./environemnts/environment.dev.ts
+
 # Run start script using npm command
 CMD ["npm", "start"]

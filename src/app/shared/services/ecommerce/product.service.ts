@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, forkJoin, map, Observable, retry } from 'rxjs';
 // import * as product from '../../../shared/data/'
 import { Products } from '../../../shared/model/product.model';
-import { environment } from 'src/environments/environment.openshift';
+import { environment } from 'src/environments/environment.dev';
 
 @Injectable({
   providedIn: 'root',
