@@ -6,7 +6,7 @@ USER root
 # Set the working directory to /project
 WORKDIR /project
 
-RUN mkdir -p /project/.angular/cache/17.2.0
+RUN mkdir -p /project/.angular/cache/17.2.0/babel-webpack
 
 # Copy package files in container currunt direcctory
 COPY --chown=1001:1001 package.json package-lock.json ./
