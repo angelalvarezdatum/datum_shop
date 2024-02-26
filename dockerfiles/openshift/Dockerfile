@@ -24,5 +24,7 @@ EXPOSE 8080
 
 RUN ls
 
+COPY ./src/environments/environment.openshift.ts ./src/environments/environment.ts
+
 # Run start script using npm command
 CMD ["npm", "start"]
