@@ -13,13 +13,13 @@ COPY --chown=1001:1001 package.json package-lock.json ./
 # Install all Angular dependacies
 RUN npm ci
 
-RUN mkdir node_modules/.cache && chmod -R 777 node_modules/.cache
-
 # Add application files in container 
 COPY . .
 
 # Set permision of .angular file in container
 VOLUME ["/project/.angular"]
+
+RUN mkdir project/.angular/.cache && chmod -R 777 project/.angular/.cache
 
 # Open port to allow traffic in containera
 EXPOSE 8080
