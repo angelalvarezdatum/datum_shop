@@ -7,7 +7,7 @@ USER root
 # Set the working directory to /project
 WORKDIR /project
 
-RUN mkdir -p /project/.angular/cache
+RUN mkdir -p /project/.angular/cache/17.2.0
 
 # Copy package files in container currunt direcctory
 COPY --chown=1001:1001 package.json package-lock.json ./
@@ -21,8 +21,6 @@ COPY . .
 
 # Set permision of .angular file in container
 VOLUME ["/project/.angular"]
-
-VOLUME ["/project/.angular/cache"]
 
 VOLUME ["/project/.angular/cache/17.2.0"]
 
