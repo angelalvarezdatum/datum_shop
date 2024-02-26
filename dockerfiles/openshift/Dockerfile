@@ -13,7 +13,7 @@ COPY --chown=1001:1001 package.json package-lock.json ./
 
 
 # Install all Angular dependacies
-RUN npm ci --ulimit nofile=4096:4096
+RUN npm ci ulimit -n 4096
 
 # Add application files in container 
 COPY . .
