@@ -13,6 +13,8 @@ COPY --chown=1001:1001 package.json package-lock.json ./
 # Install all Angular dependacies
 RUN npm ci
 
+RUN mkdir node_modules/.cache && chmod -R 777 node_modules/.cache
+
 # Add application files in container 
 COPY . .
 
