@@ -22,5 +22,7 @@ VOLUME ["/project/.angular"]
 # Open port to allow traffic in containera
 EXPOSE 8080
 
+RUN ls
+
 # Run start script using npm command
-CMD ["npm", "start --configuration openshift"]
+CMD ["npm", "start"]
