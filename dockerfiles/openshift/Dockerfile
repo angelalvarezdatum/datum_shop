@@ -3,6 +3,8 @@ FROM registry.access.redhat.com/ubi8/nodejs-20
 
 USER root
 
+RUN mkdir -p /project/.angular/cache
+
 # Set the working directory to /project
 WORKDIR /project
 
