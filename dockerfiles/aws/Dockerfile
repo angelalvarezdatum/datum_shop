@@ -1,26 +1,26 @@
-FROM ubi8/nodejs-18
+# Import the base image as UBI-Nodejs 18 image
+FROM node:18
 
 USER root
 
-RUN mkdir -p /app
+# Set the working directory to /project
+WORKDIR /project
 
-# Set the working directory
-WORKDIR /app
+# Copy package files in container currunt direcctory
+COPY --chown=1001:1001 package.json package-lock.json ./
 
-COPY . /app
 
+# Install all Angular dependacies
 RUN npm ci
 
-# Generate the build of the application
-RUN npm run build-aws
+# Add application files in container 
+COPY . .
 
-WORKDIR /app/dist
+# Set permision of .angular file in container
+VOLUME ["/project/.angular"]
 
-# Stage 2: Serve app with nginx server
-FROM ubi8/nginx-122
+# Open port to allow traffic in container
+EXPOSE 8080
 
-COPY nginx.conf /etc/nginx/nginx.conf
-
-COPY --from=build /app/dist/datum_shop /usr/share/nginx/html
-
-CMD nginx -g "daemon off;"
+# Run start script using npm command
+CMD ["npm", "start --configuration aws"]
